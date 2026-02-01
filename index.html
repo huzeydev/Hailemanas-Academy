@@ -11,7 +11,32 @@
       --glass: rgba(255,255,255,0.06);
       --glass-2: rgba(255,255,255,0.08);
     }
-    body{background: radial-gradient(circle at 10% 10%, #0b1226 0%, #071020 25%, #041423 60%, #00121a 100%);}
+body{
+  background: linear-gradient(
+    -45deg,
+    #020617,
+    #020617,
+    #0b1226,
+    #020617,
+    #041423
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+}
+
+/* smooth animated gradient */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
     /* starfield */
     .stars, .stars:after{position:fixed;inset:0;pointer-events:none}
@@ -300,4 +325,5 @@
   </script>
 </body>
 </html>
+
 
