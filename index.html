@@ -49,33 +49,7 @@
 }
 
 
-    /* starfield */
-    .stars, .stars:after{position:fixed;inset:0;pointer-events:none}
-    .stars{background:transparent}
-    .stars:after{content:"";background-image:radial-gradient(white 0.8px, transparent 0.9px);background-size:3px 3px;opacity:0.35;mix-blend-mode:screen;transform:translateZ(0);animation:twinkle 12s linear infinite}
-    @keyframes twinkle{0%{opacity:0.2}50%{opacity:0.6}100%{opacity:0.2}}
-
-    /* floating nebula */
-    .nebula{position:fixed;inset:0;background:radial-gradient(ellipse at 20% 30%, rgba(14,165,233,0.08), transparent 10%), radial-gradient(ellipse at 80% 70%, rgba(99,102,241,0.06), transparent 12%)}
-
-    /* container card styles */
-    .card-3d{backdrop-filter: blur(6px); background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(2,6,23,0.6); border-radius: 16px;}
-
-    /* anime-avatar 3d-ish */
-    .anime-avatar{width:86px;height:86px;border-radius:18px;overflow:hidden;transform-style:preserve-3d;box-shadow: 0 8px 30px rgba(3,7,18,0.6);}
-    .anime-face{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ffefdb,#ffd6d6);}
-    .anime-hair{position:absolute;left:0;top:0;right:0;bottom:0;mix-blend-mode:multiply;opacity:0.95}
-
-    /* subtle 3d tilt for cards */
-    .tilt{transition:transform .15s ease, box-shadow .15s ease}
-    .tilt:hover{transform:translateY(-8px) rotateX(2deg);box-shadow:0 18px 40px rgba(2,6,23,0.7)}
-
-    /* nice scroll inside admin modal */
-    .scrollbar::-webkit-scrollbar{height:8px;width:8px}
-    .scrollbar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:999px}
-
-    /* small responsive */
-    @media (max-width:640px){.desktop-only{display:none}}
+   }
   </style>
 </head>
 <body class="text-slate-100 antialiased">
@@ -336,4 +310,5 @@
   </script>
 </body>
 </html>
+
 
