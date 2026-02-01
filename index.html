@@ -15,54 +15,36 @@
   background:#020617;
   overflow-x:hidden;
 }
-/* ===== AURORA (BOTTOM LAYER) ===== */
-.aurora{
+/* ===== LIVE AURORA CANVAS ===== */
+.live-bg{
   position:fixed;
-  inset:-20%;
-  pointer-events:none;
-  filter: blur(70px) saturate(160%);
-  opacity:0.9;
+  inset:0;
   z-index:-3;
-}
-
-.aurora::before,
-.aurora::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse at 15% 30%, rgba(56,189,248,0.45), transparent 50%),
-    radial-gradient(ellipse at 75% 40%, rgba(99,102,241,0.45), transparent 55%),
-    radial-gradient(ellipse at 50% 85%, rgba(168,85,247,0.35), transparent 60%);
-  animation: auroraMove 32s ease-in-out infinite alternate;
-}
-
-.aurora::after{
-  animation-duration: 45s;
-  opacity:0.7;
-  mix-blend-mode: screen;
-}
-
-@keyframes auroraMove{
-  0%   { transform: translate(-8%, -6%) rotate(0deg); }
-  50%  { transform: translate(8%, 10%) rotate(8deg); }
-  100% { transform: translate(-6%, -8%) rotate(-6deg); }
-}
-
-/* ===== STARS ===== */
-.stars,
-.stars:after{
-  position:fixed;
-  inset:0;
   pointer-events:none;
-  z-index:-2;
+  background:
+    radial-gradient(
+      circle at var(--x,50%) var(--y,50%),
+      rgba(56,189,248,0.45),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at calc(var(--x,50%) + 10%) calc(var(--y,50%) - 20%),
+      rgba(168,85,247,0.4),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at calc(var(--x,50%) - 20%) calc(var(--y,50%) + 10%),
+      rgba(99,102,241,0.35),
+      transparent 45%
+    );
+  filter: blur(80px) saturate(160%);
+  animation: bgDrift 18s ease-in-out infinite alternate;
 }
 
-/* ===== NEBULA ===== */
-.nebula{
-  position:fixed;
-  inset:0;
-  z-index:-1;
+/* slow breathing motion */
+@keyframes bgDrift{
+  0%{ transform: scale(1) translate(0,0); }
+  100%{ transform: scale(1.15) translate(4%, -4%); }
 }
 
   </style>
@@ -71,6 +53,7 @@
 
   <div class="stars"></div>
   <div class="nebula"></div>
+<div class="live-bg"></div>
 
   <!-- Top nav -->
   <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
@@ -321,10 +304,18 @@
 
     // ---------------------- SECURITY NOTE ----------------------
     // This demo stores the admin password in the client (not secure). Use server-side auth with hashed passwords for production.
+/* ===== LIVE BACKGROUND MOUSE REACTION ===== */
+document.addEventListener('mousemove', e=>{
+  const x = (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
+  document.documentElement.style.setProperty('--x', `${x}%`);
+  document.documentElement.style.setProperty('--y', `${y}%`);
+});
 
   </script>
 </body>
 </html>
+
 
 
 
