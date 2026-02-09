@@ -3,11 +3,11 @@ import os, json
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
-app.secret_key = "supersecretkey"  # optional for sessions
+app.secret_key = "supersecretkey"  
 
-ADMIN_PASSWORD = "admin123"
+ADMIN_PASSWORD = "hmahma"
 
-# Ensure folders exist
+
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs('data', exist_ok=True)
 if not os.path.exists('data/announcements.json'):
@@ -86,3 +86,4 @@ def download_note(filename):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
